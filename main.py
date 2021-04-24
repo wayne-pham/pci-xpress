@@ -72,6 +72,7 @@ CREATE TABLE AFTERMARKET_INVENTORY
   PRIMARY KEY (GPU_Name),
   FOREIGN KEY (Store_Name) REFERENCES STORE(Store_Name)
 ); """
+cursor.execute(aftermarket_inventory)
 
 # Manufacturer 
 cursor.execute("DROP TABLE IF EXISTS MANUFACTURER")
@@ -140,12 +141,36 @@ CREATE TABLE GPU
 ); """
 cursor.execute(gpu)
 
+
+
+### INSERT DATA ###
+
+# Store
+cursor.execute("INSERT INTO STORE VALUES(?, ?, ?, ?, ?, ?);", ('PCIXpress','1234 Capacitor Rd','Indianapolis','IN', 12345, 1234567890))
+
+# Stock Inventory
+cursor.execute("INSERT INTO STOCK_INVENTORY VALUES(?,?,?)", ('RTX 3090 Founders Edition', 10, 'PCIXpress'))
+cursor.execute("INSERT INTO STOCK_INVENTORY VALUES(?,?,?)", ('RTX 3080 Founders Edition', 9, 'PCIXpress'))
+cursor.execute("INSERT INTO STOCK_INVENTORY VALUES(?,?,?)", ('RTX 3070 Founders Edition', 8, 'PCIXpress'))
+cursor.execute("INSERT INTO STOCK_INVENTORY VALUES(?,?,?)", ('RTX 3060 Founders Edition', 7, 'PCIXpress'))
+cursor.execute("INSERT INTO STOCK_INVENTORY VALUES(?,?,?)", ('RTX 3060 Ti Founders Edition', 6, 'PCIXpress'))
+
+# After market inventory
+cursor.execute("INSERT INTO AFTERMARKET_INVENTORY VALUES(?,?,?)", ('RTX 3090 Founders Edition', 10, 'PCIXpress'))
+cursor.execute("INSERT INTO AFTERMARKET_INVENTORY VALUES(?,?,?)", ('RTX 3080 Founders Edition', 9, 'PCIXpress'))
+cursor.execute("INSERT INTO AFTERMARKET_INVENTORY VALUES(?,?,?)", ('RTX 3070 Founders Edition', 8, 'PCIXpress'))
+cursor.execute("INSERT INTO AFTERMARKET_INVENTORY VALUES(?,?,?)", ('RTX 3060 Founders Edition', 7, 'PCIXpress'))
+cursor.execute("INSERT INTO AFTERMARKET_INVENTORY VALUES(?,?,?)", ('RTX 3060 Ti Founders Edition', 6, 'PCIXpress'))
+
+
+# GPU
+cursor.execute("INSERT INTO GPU VALUES(?,?,?,?,?,?,?,?);", ('RTX 3090 Founders Edition', 1500.0, 600.0, 'Ampere', 1000, 24, 1395, 'Nvidia'))
+cursor.execute("INSERT INTO GPU VALUES(?,?,?,?,?,?,?,?);", ('RTX 3080 Founders Edition', 700.0, 280.0, 'Ampere', 750, 10, 1440, 'Nvidia'))
+cursor.execute("INSERT INTO GPU VALUES(?,?,?,?,?,?,?,?);", ('RTX 3070 Founders Edition', 500.0, 200.0, 'Ampere', 650, 8, 1500, 'Nvidia'))
+cursor.execute("INSERT INTO GPU VALUES(?,?,?,?,?,?,?,?);", ('RTX 3060 Founders Edition', 330.0, 132.0, 'Ampere', 550, 12, 1320, 'Nvidia'))
+cursor.execute("INSERT INTO GPU VALUES(?,?,?,?,?,?,?,?);", ('RTX 3060 Ti Founders Edition', 400.0, 160.0, 'Ampere', 600, 8, 1410, 'Nvidia'))
+
+
 database.commit()
 
-
-# ### INSERT DATA ###
-
-
-
-
-# ### QUERIES ###
+### QUERIES ###
