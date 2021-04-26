@@ -9,3 +9,8 @@ WHERE Clock_Speed > 1400
 SELECT GPU_Name
 FROM STOCK_INVENTORY
 WHERE GPU_Quantity > 7
+
+
+SELECT *
+FROM CUSTOMER_ACCOUNT
+WHERE City = 'Mondstadt' OR State = 'SN'

@@ -195,3 +195,31 @@ cursor.execute("INSERT INTO MANUFACTURER VALUES(?,?,?,?,?,?,?);", ('AMD', 187728
 database.commit()
 
 ### QUERIES ###
+
+cursor.execute("SELECT * FROM GPU")
+result = cursor.fetchall()
+print("All GPUs in stock at PCI-Xpress")
+for row in result:
+  print(row)
+print("\n")
+
+cursor.execute("SELECT GPU_Name FROM GPU WHERE Clock_Speed > 1400")
+output = cursor.fetchall()
+print("GPU Clock Speed > 1400 MHz")
+for row in output:
+  print(row)
+print("\n")
+
+cursor.execute("SELECT GPU_Name FROM STOCK_INVENTORY WHERE GPU_Quantity > 7")
+quantity = cursor.fetchall()
+print("Stock Inventory > 7")
+for row in quantity:
+  print(row)
+print("\n")
+
+cursor.execute("SELECT * FROM CUSTOMER_ACCOUNT WHERE City = 'Mondstadt' OR State = 'SN'")
+ca_results = cursor.fetchall()
+print("Customer Account Results:")
+for row in ca_results:
+  print(row)
+print("\n")
