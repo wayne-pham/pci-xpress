@@ -20,8 +20,9 @@ def query(queryTitle, sqlCode):
     print(row)
   print("\n")
 
+
 #1
-query("All avialable GPUs in your invertory", 
+query("All available GPUs in your inventory",
       "SELECT * FROM GPU")
 
 #2
@@ -45,11 +46,17 @@ query("GPUs with VRAM higher than 10GB",
       "SELECT GPU_Name FROM GPU WHERE VRAM > 10 ORDER BY GPU_Name DESC")
 
 #7
-query("GPU from stock and aftermarket that are similar in name and quantity", 
-      "SELECT STOCK_INVENTORY.GPU_Name, STOCK_INVENTORY.GPU_Quantity FROM STOCK_INVENTORY INNER JOIN AFTERMARKET_INVENTORY ON STOCK_INVENTORY.Store_Name = AFTERMARKET_INVENTORY.Store_Name")
+query("What customers used a credit card to make a purchase at PCI-Xpress? For security reasons list the email only and type of payment.",
+      "SELECT CUSTOMER_ACCOUNT.Email, CUSTOMER.Payment_Method FROM CUSTOMER_ACCOUNT INNER JOIN CUSTOMER ON CUSTOMER_ACCOUNT.Account_ID = CUSTOMER.ID WHERE CUSTOMER.Payment_Method LIKE 'CREDIT'")
 
 #8
+query("What Employees make more than $100.00?", 
+      "SELECT Name, Wage FROM EMPLOYEE WHERE Wage > 100")
 
 #9
+query("Which customers purchased more than 2 items from PCI-Xpress?",
+      "SELECT CUSTOMER_ACCOUNT.Email, CUSTOMER.Items_Purchased FROM CUSTOMER INNER JOIN CUSTOMER_ACCOUNT ON CUSTOMER_ACCOUNT.Account_ID = CUSTOMER.ID WHERE CUSTOMER.Items_Purchased > 2")
 
 #10
+query("What GPU Manufacturers are in Santa Clara?",
+      "SELECT Name, Contact_Number FROM MANUFACTURER WHERE City LIKE 'Santa Clara' ORDER BY Name ASC")
