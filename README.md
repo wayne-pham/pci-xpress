@@ -1,4 +1,4 @@
-# PCI-Xpress
+# PCI-Xpress: CSCI 44300 Final Project
 
 ## Enterprise Statment
 
